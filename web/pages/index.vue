@@ -49,7 +49,7 @@
         <!--W3 Schools-->
         <div class="form-group">
           <label for="authId">Auth ID:</label>
-          <input type="text" v-model="authCode" class="form-control" id="authId">
+          <input type="text" v-model="authCode" class="form-control" id="authId" disabled>
         </div>
         <!--W3 Schools-->
         <button @click="onSubmit()" type ="button" class="btn btn-primary">Save</button>
@@ -69,7 +69,7 @@ export default {
     return {
       phoneNumber: '+1',
       mfaCode: '',
-      authCode: '',
+      authCode: 'Using test Auth ID since judges do not have access to IRC! Just click "Submit"!',
       fbUser: null,
       flow: 1,
       error: '',
@@ -131,9 +131,8 @@ export default {
         this.error = 'Please enter a your IRC2.Auth code';
         return;
       } else {
-        console.log(this.$fire.auth.currentUser.id)
         const token = await this.$fire.auth.currentUser.getIdToken()
-        await this.$axios.post('https://5001-aw0-shshacks2022-y3m2qnn83en.ws-us38.gitpod.io/irc-tracker/us-central1/setupAccount-default', {
+        await this.$axios.post('https://us-central1-irc-tracker.cloudfunctions.net/setupAccount-default', {
           authCode: this.authCode,
           phoneNumber: this.phoneNumber,
           userId: this.$fire.auth.currentUser.id

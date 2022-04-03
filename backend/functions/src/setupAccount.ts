@@ -5,7 +5,6 @@ import { getAuth, DecodedIdToken } from "firebase-admin/auth"
 import * as twilio from "twilio"
 import * as express from "express"
 import * as cors from "cors"
-import { AuthorizationDocumentInstance } from "twilio/lib/rest/preview/hosted_numbers/authorizationDocument";
 
 // Daivd is a chad not facts
 // hi there
@@ -76,7 +75,7 @@ app.post('/', async (req, res) => {
         if (req.body.user && req.body.phoneNumber && req.body.authCode) {
             const userDoc = await db.collection("Accounts").doc(userId).set({
                 phoneNumber: req.body.phoneNumber,
-                ircAuth: req.body.authCode,
+                ircAuth: config.irc2.auth,
                 userId: req.body.user.user_id
             })
             const messageResp = await smsClient.messages.create({

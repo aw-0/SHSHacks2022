@@ -2,6 +2,9 @@
 ### Node template
 # Logs
 /logs
+/public
+/dist
+/.firebase
 *.log
 npm-debug.log*
 yarn-debug.log*
