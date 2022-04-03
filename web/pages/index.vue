@@ -14,10 +14,10 @@
         <div class="form-group">
           <label for="phone">Phone Number:</label>
           <input type="tel" class="form-control" id="phone" v-model="phoneNumber" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
-          <p v-if="error" style="color: red;">{{error}}</p>
         </div>
         <!--W3 Schools-->
         <button id="sign-in-button" type="button" class="btn btn-primary">Send Code</button>
+        <p v-if="error" style="color: red;">{{error}}</p>
       </div>
       <div id="part2" v-if="flow === 2">
         <p>2. Verify the phone number by entering the code messaged to you.</p>
@@ -28,6 +28,7 @@
         </div>
         <!--W3 Schools-->
         <button @click="verifyPhoneNumber()" type="button" class="btn btn-primary">Verify</button>
+        <p v-if="error" style="color: red;">{{error}}</p>
       </div>
       <div id="part3" v-if="flow === 3">
         <p>3. Get your IRC Authorization Identification (Auth ID) by following the steps below.</p>
@@ -52,6 +53,10 @@
         </div>
         <!--W3 Schools-->
         <button @click="onSubmit()" type ="button" class="btn btn-primary">Save</button>
+        <p v-if="error" style="color: red;">{{error}}</p>
+      </div>
+      <div id="part4" v-if="flow === 4">
+        <p>Check {{phoneNumber}} soon for a message from (903) 289-7411 regarding IRC-Tracker!</p>
       </div>
     </div>
   </div>
@@ -67,7 +72,8 @@ export default {
       authCode: '',
       fbUser: null,
       flow: 1,
-      error: ''
+      error: '',
+      signedUp: false,
     }
   },
   mounted() {
@@ -90,14 +96,18 @@ export default {
         this.error = 'Please enter a phone number';
         return;
       } else {
-        this.$fire.auth.signInWithPhoneNumber(this.phoneNumber, this.recaptchaVerifier)
+        if (!this.signedUp) {
+          this.$fire.auth.signInWithPhoneNumber(this.phoneNumber, this.recaptchaVerifier)
           .then(confirmationResult => {
+            this.error = ""
+            this.signedUp = true
             this.confirmationResult = confirmationResult;
             this.flow = 2;
           })
           .catch(error => {
             this.error = error
           });
+        }
       }
     },
     verifyPhoneNumber() {
@@ -107,6 +117,7 @@ export default {
       } else {
         this.confirmationResult.confirm(this.mfaCode)
           .then(result => {
+            this.error = ""
             this.fbUser = result.user
             this.flow = 3;
           })
@@ -115,9 +126,30 @@ export default {
           });
       }
     },
-    onSubmit() {
-
-    }
+    async onSubmit() {
+      if (!this.authCode) {
+        this.error = 'Please enter a your IRC2.Auth code';
+        return;
+      } else {
+        console.log(this.$fire.auth.currentUser.id)
+        const token = await this.$fire.auth.currentUser.getIdToken()
+        await this.$axios.post('https://5001-aw0-shshacks2022-y3m2qnn83en.ws-us38.gitpod.io/irc-tracker/us-central1/setupAccount-default', {
+          authCode: this.authCode,
+          phoneNumber: this.phoneNumber,
+          userId: this.$fire.auth.currentUser.id
+        }, {
+          headers: {
+            authorization: `Bearer ${token}`
+          }
+        }).then(response => {
+          console.log("finished")
+          this.error = ""
+          this.flow == 4;
+        }).catch(error => {
+          this.error = error
+        })
+      }
+    },
   }
 }
 </script>

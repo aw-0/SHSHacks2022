@@ -1,5 +1,5 @@
-import * as sendBasicGrades from "./sendBasicGrades";
+import * as setupAccount from "./setupAccount";
 import * as sendMessageResponse from "./sendMessageResponse"
 
-exports.sendBasicGrades = sendBasicGrades
+exports.setupAccount = setupAccount
 exports.sendMessageResponse = sendMessageResponse

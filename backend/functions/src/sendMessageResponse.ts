@@ -6,9 +6,6 @@ import { CookieJar } from "tough-cookie";
 import { wrapper } from "axios-cookiejar-support"
 
 const db = getFirestore()
-const smsClient = twilio("ACf9d710510a3e71df488fcdb209e02bbe", "18dd58581de0fdec961621ddbb487d75", {
-    logLevel: "debug"
-})
 
 const convertNumberToGrade = (gradeNumber: string) => {
     if (gradeNumber === "4") return "Exceeds"
