@@ -14,8 +14,8 @@ The differnet commands a user can use are messaged to them after they sign up.
 ### Sources Used
 #### Backend
 - Twilio (SMS API)
-- Axios
-- axios-cookiejar-support & tough-cookie
+- axios
+- Saleforce's `tough-cookie` & 3846masa's `axios-cookiejar-support`
 #### Website
 - Vue & Nuxt.js
 - Bootstrap
@@ -23,4 +23,4 @@ The differnet commands a user can use are messaged to them after they sign up.
 #### Other
 - Firebase (Firestore, Functions, Hosting)
 - W-3 Schools
-- Stackoverflow
+- StackOverflow
