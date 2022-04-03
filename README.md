@@ -13,8 +13,13 @@ The differnet commands a user can use are messaged to them after they sign up.
 
 
 ### Sources Used
-- Twilio (SMS API)
 - Firebase (Firestore, Functions, Hosting)
-- Vue & Nuxt.js
 - W-3 Schools
 - Stackoverflow
+#### Backend
+- Twilio (SMS API)
+- Axios
+- axios-cookiejar-support & tough-cookie
+#### Website
+- Vue & Nuxt.js
+- Bootstrap
