@@ -118,7 +118,7 @@ export default functions.https.onRequest(async (req, resp) => {
                                         formattedClass += `${courseData.courseName}: ${courseData.assessment.projectedGrade}\n`
                                     }
                                 }
-                                messageSendBack.message(`Welcome to IRC Tracker! Here are all of your classes: \n${formattedClass}`)
+                                messageSendBack.message(`Welcome to IRC Tracker! Here are all of your classes: \n\n${formattedClass}`)
                             } else if (body.includes(":grades")) {
                                 const className = body.substring(0, body.indexOf(":")).toLowerCase()
                                 let formattedGrades = ""
@@ -129,7 +129,7 @@ export default functions.https.onRequest(async (req, resp) => {
                                             console.log(standard.proficiencyLevel)
                                             formattedGrades += `${standard.standardName} - ${standard.proficiencyLevel?.slice(0, standard.proficiencyLevel?.indexOf("-"))}\n`
                                         }
-                                        messageSendBack.message(`Welcome to IRC Tracker! Here are all of your grades for ${courseData.courseName}: \n${formattedGrades}`)
+                                        messageSendBack.message(`Welcome to IRC Tracker! Here are all of your grades for ${courseData.courseName}: \n\n${formattedGrades}`)
                                     }
                                 }
                             } else if (body.includes(":standards:")) {
