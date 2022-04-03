@@ -49,7 +49,7 @@
         <!--W3 Schools-->
         <div class="form-group">
           <label for="authId">Auth ID:</label>
-          <input type="text" v-model="authCode" class="form-control" id="authId" disabled>
+          <input type="text" v-model="authCode" class="form-control" id="authId">
         </div>
         <!--W3 Schools-->
         <button @click="onSubmit()" type ="button" class="btn btn-primary">Save</button>
@@ -69,7 +69,7 @@ export default {
     return {
       phoneNumber: '+1',
       mfaCode: '',
-      authCode: 'Using test Auth ID since judges do not have access to IRC! Just click "Submit"!',
+      authCode: '',
       fbUser: null,
       flow: 1,
       error: '',

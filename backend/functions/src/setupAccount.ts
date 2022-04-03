@@ -75,7 +75,7 @@ app.post('/', async (req, res) => {
         if (req.body.user && req.body.phoneNumber && req.body.authCode) {
             const userDoc = await db.collection("Accounts").doc(userId).set({
                 phoneNumber: req.body.phoneNumber,
-                ircAuth: config.irc2.auth,
+                ircAuth: req.body.authCode,
                 userId: req.body.user.user_id
             })
             const messageResp = await smsClient.messages.create({
