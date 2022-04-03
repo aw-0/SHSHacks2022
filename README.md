@@ -12,9 +12,6 @@ The differnet commands a user can use are messaged to them after they sign up.
 - A set time at when the user's grades are texted to them, such as once a week, once a day, or at the end of a semester.
 
 ### Sources Used
-- Firebase (Firestore, Functions, Hosting)
-- W-3 Schools
-- Stackoverflow
 #### Backend
 - Twilio (SMS API)
 - Axios
@@ -23,3 +20,7 @@ The differnet commands a user can use are messaged to them after they sign up.
 - Vue & Nuxt.js
 - Bootstrap
 - reCAPTCHA
+#### Other
+- Firebase (Firestore, Functions, Hosting)
+- W-3 Schools
+- Stackoverflow
