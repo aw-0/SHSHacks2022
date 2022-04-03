@@ -10,6 +10,7 @@ The different commands a user can send to the Twilio number are messaged after t
 ### Further Improvements: 
 - Notification message alerts when new assignments are added & graded on the Grading System, a **highly requested feature from many students**.
 - A set time at when the user's grades are texted to them, such as once a week, once a day, or at the end of a semester.
+- Semester GPA Prediction by calculating all projected grades into a unweighted GPA number.
 
 ### Sources Used
 #### Backend
