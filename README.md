@@ -8,9 +8,8 @@ The instructions on how to use the project are on the website they use to sign u
 The differnet commands a user can use are messaged to them after they sign up.    
 
 ### Further Improvements: 
-- Scheduled updates on the user's grades texted to them (a choice made by the user through the website) or,
-- a set time at when the user's grades are texted to them, such as once a week, once a day, or at the end of a semester.
-
+- Notification message alerts when new assignments are added & graded on the Grading System, a **highly requested feature from many students**.
+- A set time at when the user's grades are texted to them, such as once a week, once a day, or at the end of a semester.
 
 ### Sources Used
 - Firebase (Firestore, Functions, Hosting)
@@ -23,3 +22,4 @@ The differnet commands a user can use are messaged to them after they sign up.
 #### Website
 - Vue & Nuxt.js
 - Bootstrap
+- reCAPTCHA
