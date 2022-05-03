@@ -1,6 +1,8 @@
 ## IRC-Tracker
 ### Built for SHS Hacks 2022
 
+**This project is not actively maintained. Code can quickly become outdated as IRC changes.**
+
 This project is for AESHS students who want to check their grades but don't want to constantly have to go to D125's Interactive Report Card (IRC) website.
 Using Twilio programmable messaging, users of IRC-Tracker can check all of their current grades, their grades in each standard for different classes, and the grades for all of their assignments in a single standard. Anytime a student wants to check their grades, all they have to do is just text a phone number.
 
